@@ -2,10 +2,10 @@ package db
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/den19980107/go-fiber-gorm-starter/config"
 	"github.com/den19980107/go-fiber-gorm-starter/db/entity"
+	"github.com/den19980107/go-fiber-gorm-starter/log"
 	"gorm.io/driver/sqlite"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
@@ -36,22 +36,22 @@ func Connect() {
 	}
 
 	if err != nil {
-		log.Panic(err.Error())
+		log.Error(err.Error())
 		panic(err)
 	}
 }
 
 func Migrate() {
-	log.Println("Initiating migration...")
+	log.Info("Initiating migration...")
 
 	err := ORM.Migrator().AutoMigrate(
 		&entity.User{},
 	)
 
 	if err != nil {
-		log.Panic(err.Error())
+		log.Error(err.Error())
 		panic(err)
 	}
 
-	log.Println("Migration Completed.")
+	log.Info("Migration Completed.")
 }

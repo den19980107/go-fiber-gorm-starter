@@ -8,12 +8,16 @@ import (
 )
 
 type AppConfig struct {
+	Env      string `env:"APP_ENB" env-default:"development"`
+	Debug    bool   `env:"APP_DEBUG" env-default:"false"`
 	Server   ServerConfig
 	Database DatabaseConfig
 	JWT      JWTConfig
+	Log      LogConfig
 }
 
 type ServerConfig struct {
+	Name string `env:"APP_NAME" env-default:"go-gorm-fiber-stater"`
 	Host string `env:"APP_HOST" env-default:"localhost"`
 	Port string `env:"APP_PORT" env-default:"8080"`
 }
@@ -33,6 +37,11 @@ type DatabaseConfig struct {
 type JWTConfig struct {
 	Expire int64  `env:"JWT_EXPIRE" env-default:"3600"`
 	Secret string `env:"JWT_SECRET" env-default:"1894cde6c936a294a478cff0a9227fd276d86df6573b51af5dc59c9064edf426"`
+}
+
+// LogConfig is a struct holding the JWT settings.
+type LogConfig struct {
+	FilePath string `env:"LOG_FILE_FORMAT" env-default:"./logs/%s-%s.log"`
 }
 
 var App AppConfig

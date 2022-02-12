@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/den19980107/go-fiber-gorm-starter/config"
 	"github.com/den19980107/go-fiber-gorm-starter/db"
+	"github.com/den19980107/go-fiber-gorm-starter/log"
 	"github.com/den19980107/go-fiber-gorm-starter/routers"
 	"github.com/gofiber/fiber/v2"
 )
@@ -10,6 +11,8 @@ import (
 func main() {
 
 	config.LoadConfigFromEnv()
+
+	log.SetupLogger()
 
 	db.Connect()
 	db.Migrate()

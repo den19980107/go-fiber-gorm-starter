@@ -1,12 +1,11 @@
 package api
 
 import (
-	"log"
-
 	"github.com/den19980107/go-fiber-gorm-starter/config"
 	"github.com/den19980107/go-fiber-gorm-starter/db"
 	"github.com/den19980107/go-fiber-gorm-starter/db/entity"
 	"github.com/den19980107/go-fiber-gorm-starter/db/repository"
+	"github.com/den19980107/go-fiber-gorm-starter/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gookit/validate"
 	"golang.org/x/crypto/bcrypt"
@@ -118,7 +117,7 @@ func CreatePasswordHash(password string) string {
 	hash, err := bcrypt.GenerateFromPassword([]byte(password), 10)
 
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Error(err.Error())
 		panic(err)
 	}
 

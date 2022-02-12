@@ -1,10 +1,10 @@
 package entity
 
 import (
-	"log"
 	"time"
 
 	"github.com/den19980107/go-fiber-gorm-starter/config"
+	"github.com/den19980107/go-fiber-gorm-starter/log"
 	"github.com/golang-jwt/jwt/v4"
 	"gorm.io/gorm"
 )
@@ -50,7 +50,7 @@ func (u *User) CreateJWTToken(secret string, expires ...int64) *JWTToken {
 	tokenHash, err := token.SignedString([]byte(secret))
 
 	if err != nil {
-		log.Panic(err.Error())
+		log.Error(err.Error())
 		panic(err)
 	}
 
