@@ -1,0 +1,23 @@
+{
+    "configurations": {
+        "default": {
+            "adapter": "delve",
+            "default": true,
+            "configuration": {
+                "request": "launch",
+                "mode": "debug",
+                "cwd": "${workspaceRoot}",
+                "stopOnEntry": false,
+                "program": "${workspaceRoot}/main.go"
+            },
+            "breakpoints": {
+                "exception": {
+                    "raised": "N",
+                    "uncaught": "",
+                    "userUnhandled": ""
+                }
+            }
+        }
+    }
+}
+
