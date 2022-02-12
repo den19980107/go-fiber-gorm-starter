@@ -2,6 +2,7 @@ package log
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/den19980107/go-fiber-gorm-starter/config"
 	"go.uber.org/zap"
@@ -23,9 +24,11 @@ func SetupLogger() {
 		zapCfg = zap.NewDevelopmentConfig()
 	}
 
+	date := time.Now().Format("2006-01-02")
+
 	zapCfg.OutputPaths = []string{
 		"stdout",
-		fmt.Sprintf(config.App.Log.FilePath, config.App.Server.Name, config.App.Env),
+		fmt.Sprintf(config.App.Log.FilePath, config.App.Env, date),
 	}
 
 	Zap, err = zapCfg.Build()
